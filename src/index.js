@@ -12,6 +12,13 @@ class ServerlessAWSDocumentation {
     this.provider = 'aws';
     this.fs = fs;
 
+    serverless.configSchemaHandler.defineFunctionEventProperties('aws', 'http', {
+      properties: {
+        documentation: { type: 'object' },
+      },
+      required: ['documentation'],
+    });
+
     Object.assign(this, models);
     Object.assign(this, swagger);
     Object.assign(this, documentation());
